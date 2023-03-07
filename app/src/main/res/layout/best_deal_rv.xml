@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/g_gray500"
+    android:elevation="0dp"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="185dp">
+
+        <ImageView
+            android:id="@+id/ProductImg"
+            android:layout_width="220dp"
+            android:layout_height="178dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/home" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Scotch Premium"
+            app:layout_constraintStart_toEndOf="@id/ProductImg"
+            app:layout_constraintTop_toTopOf="@id/ProductImg"
+            android:layout_marginTop="7dp"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/poppins_light"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/oprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/sf_pro_display"
+            android:text="$2000 RS"
+            android:textColor="@color/g_red"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/nprice"
+            app:layout_constraintTop_toBottomOf="@id/name"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/nprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/sf_pro_display"
+            android:text="$1600 RS"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/name"
+            app:layout_constraintTop_toBottomOf="@id/name" />
+
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/btn_see_product"
+            android:layout_width="83dp"
+            android:layout_height="28dp"
+
+            android:layout_marginTop="108dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/btn_background"
+            android:fontFamily="@font/poppins_light"
+            android:text="See Product"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="11sp"
+            android:textStyle="bold"
+
+            app:layout_constraintEnd_toEndOf="@+id/nprice"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/ProductImg"
+            app:layout_constraintTop_toTopOf="@id/name"
+            tools:ignore="MissingConstraints" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

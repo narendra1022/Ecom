@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="2dp"
+    android:id="@+id/cl_reccart"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="9dp"
+        app:cardElevation="6dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="7dp"
+            android:orientation="horizontal">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/product_image_card"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="18dp"
+                app:cardCornerRadius="5dp">
+                <ImageView
+                    android:scaleType="fitXY"
+                    android:id="@+id/ProductImg"
+                    android:layout_width="match_parent"
+                    android:adjustViewBounds="true"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_launcher_background"/>
+            </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:padding="11dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/ProductName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Golden wheat premium quality organic pro max"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
+                <!--
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/quantity_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="4dp"
+                    tools:text="fdhrfhdrdh"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="15sp"/>
+-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="0dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_marginTop="3dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Price: ₹"
+                                android:textColor="@color/black"
+                                android:textSize="12sp"/>
+
+                            <TextView
+                                android:id="@+id/ProductNewPrice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:text="0"
+                                android:textColor="@color/black"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="0dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Subtotal: ₹"
+                                android:fontFamily="@font/poppins"
+                                android:textColor="@color/black"
+                                android:textSize="12sp"/>
+
+                            <TextView
+                                android:id="@+id/tv_totalPrice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins"
+                                android:text=" 0"
+                                android:textColor="@color/black"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+
+                        android:layout_gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_btnRed"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textColor="#ffffff"
+                            android:background="@drawable/remove"
+                            android:textStyle="bold"
+                            android:paddingLeft="7dp"
+                            android:paddingBottom="2dp"
+                            android:paddingTop="2dp"
+                            android:paddingRight="7dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_qtyNo"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.7"
+                            android:layout_height="wrap_content"
+                            android:text="1"
+                            android:gravity="center"
+                            android:textColor="#000000"
+                            android:background="@drawable/boxx"
+                            android:padding="7dp"/>
+
+                        <TextView
+                            android:id="@+id/tv_btnGreen"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
+                            android:layout_height="wrap_content"
+                            android:text="+"
+                            android:textColor="#ffffff"
+                            android:textStyle="bold"
+                            android:paddingBottom="2dp"
+                            android:paddingTop="2dp"
+                            android:background="@drawable/plus"
+                            android:paddingLeft="7dp"
+                            android:paddingRight="7dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_btnRemove"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="11dp"
+                    android:text="Remove"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:padding="4dp"
+                    android:background="@drawable/remove"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

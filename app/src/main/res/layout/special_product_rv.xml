@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/g_gray500"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="178dp">
+
+        <ImageView
+            android:id="@+id/ProductImg"
+            android:layout_width="200dp"
+            android:layout_height="174dp"
+            android:scaleType="fitXY"
+            android:layout_marginEnd="14dp"
+            android:src="@drawable/home"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginBottom="32dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Scotch Premium"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/btn_see_product"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4" />
+
+        <TextView
+            android:id="@+id/ProductOldPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/sf_pro_display"
+            android:text="$2000 RS"
+            android:textColor="@color/g_red"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/ProductNewPrice"
+            app:layout_constraintTop_toBottomOf="@id/ProductName"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/ProductNewPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_display"
+            android:text="$1600 RS"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/ProductName"
+            app:layout_constraintTop_toBottomOf="@id/ProductName" />
+
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/btn_see_product"
+            android:layout_width="83dp"
+            android:layout_height="28dp"
+            android:background="@drawable/btn_background"
+            android:fontFamily="@font/poppins_light"
+            android:text="Add To Cart"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:textStyle="bold"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ProductImg"
+            app:layout_constraintHorizontal_bias="0.145"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.784" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
