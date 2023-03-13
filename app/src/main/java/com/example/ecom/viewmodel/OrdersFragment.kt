@@ -1,14 +1,11 @@
-package com.example.ecom
+package com.example.ecom.viewmodel
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -17,27 +14,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.example.ecom.Cart.adapter.CartAdapter
-import com.example.ecom.adapters.CartDatabase
-import com.example.ecom.adapters.Specialproductsadapter
-import com.example.ecom.data.CartItem
-import com.example.ecom.data.orderData
+import com.example.ecom.R
+import com.example.ecom.adapters.OrdersAdapter
 import com.example.ecom.databinding.FragmentCartBinding
+import com.example.ecom.databinding.FragmentOrdersBinding
 import com.example.ecom.util.Resource
-import com.example.ecom.viewmodel.CartViewmodel
-import com.example.ecom.viewmodel.HomeCategeryViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.SetOptions
-import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collectLatest
 
-class cartFragment : Fragment() {
+class OrdersFragment : Fragment() {
 
-    private lateinit var spad: CartAdapter
-    private val viewmodel by viewModels<CartViewmodel>()
+    private lateinit var spad: OrdersAdapter
+    private val viewmodel by viewModels<OrdersViewmodel>()
     private lateinit var db: FirebaseFirestore
+    private lateinit var auth:FirebaseAuth
 
-    private lateinit var binding: FragmentCartBinding
+    private lateinit var binding: FragmentOrdersBinding
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -54,17 +47,41 @@ class cartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentCartBinding.inflate(layoutInflater, container, false)
+        binding = FragmentOrdersBinding.inflate(layoutInflater, container, false)
 
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.detach(this)
+        fragmentTransaction.attach(this)
+        fragmentTransaction.commit()
 
-        FirebaseFirestore.getInstance().collection("users")
-            .document(FirebaseAuth.getInstance().uid!!).collection("cart")
-            .get().addOnSuccessListener { docs ->
-                if (docs.size().toString().equals("0")){
-                    binding.tvProceed.visibility=View.GONE
-                    binding.empty.visibility=View.VISIBLE
+        var pr=0
+        auth=FirebaseAuth.getInstance()
+        db= FirebaseFirestore.getInstance()
+
+        val coll =
+            db.collection("users").document(auth.uid!!)
+                .collection("Orders")
+        coll.whereEqualTo("ref","9014").get().addOnSuccessListener { task ->
+            for (document in task) {
+                // Access the data of the matching document
+                val name = document.getString("price")
+                try{
+                    pr+=name.toString().toDouble().toInt()
+                }
+                catch (e: NumberFormatException) {
+                    Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
                 }
             }
+            binding.total.text= "Total Amount has to pay : ₹ "+pr.toString()
+
+        }
+            .addOnFailureListener {
+                Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+            }
+
+
+
 
         return binding.root
     }
@@ -82,19 +99,10 @@ class cartFragment : Fragment() {
 
 
 
-        binding.tvProceed.setOnClickListener {
-            FirebaseFirestore.getInstance().collection("users")
-                .document(FirebaseAuth.getInstance().uid!!).collection("Addresses")
-                .get().addOnSuccessListener { docs ->
-                    if (docs.size().toString().equals("0")){
-                        findNavController().navigate(R.id.action_cartFragment_to_addressFragment)
-                    }
-                    else{
-                        findNavController().navigate(R.id.action_cartFragment_to_addressesListFragment)
-                    }
-                }
+        spad.onItemClick = {
 
         }
+
 
         lifecycleScope.launchWhenStarted {
             viewmodel.specialproduct.collectLatest {
@@ -129,7 +137,7 @@ class cartFragment : Fragment() {
 
     private fun SetupSpecialProductRv() {
 
-        spad = CartAdapter()
+        spad = OrdersAdapter()
         val snapHelper: SnapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(binding.item)
         binding.item.apply {
@@ -138,7 +146,6 @@ class cartFragment : Fragment() {
             val adapter = spad
             binding.item.adapter = adapter
         }
-
 
     }
 

@@ -1,24 +1,20 @@
-package com.example.ecom.Cart.adapter
+package com.example.ecom.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.ecom.cartFragment
 import com.example.ecom.data.cartadata
-import com.example.ecom.databinding.CartItemBinding
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.ecom.databinding.OrdersBinding
 
-class CartAdapter : RecyclerView.Adapter<CartAdapter.viewHolder>() {
+
+class OrdersAdapter : RecyclerView.Adapter<OrdersAdapter.viewHolder>() {
 
     var onItemClick: ((cartadata) -> Unit)? = null
 
-    inner class viewHolder(val binding: CartItemBinding) :
+    inner class viewHolder(val binding: OrdersBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: cartadata) {
 
@@ -30,31 +26,6 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.viewHolder>() {
 
 //                ProductOldPrice.text = product.offerPercentage.toString()
 //                ProductOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-            }
-
-            binding.Remove.setOnClickListener {
-                val coll =
-                    FirebaseFirestore.getInstance().collection("users")
-                        .document(FirebaseAuth.getInstance().uid!!)
-                        .collection("cart")
-                coll.whereEqualTo("name", binding.ProductName.text.toString()).get().addOnSuccessListener { task ->
-                    for (document in task) {
-                        // Access the data of the matching document
-                        val documentId=document.id
-                        coll.document(documentId).delete().addOnSuccessListener {
-
-                            notifyDataSetChanged()
-
-                            binding.Remove.text="deleted successfully"
-                        }
-                    }
-
-
-                }
-                    .addOnFailureListener {
-
-                    }
-
             }
 
 
@@ -80,9 +51,9 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.viewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CartAdapter.viewHolder {
+    ): OrdersAdapter.viewHolder {
         return viewHolder(
-            CartItemBinding.inflate(
+            OrdersBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )

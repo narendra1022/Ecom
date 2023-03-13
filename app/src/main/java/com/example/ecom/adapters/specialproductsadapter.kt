@@ -30,8 +30,8 @@ class Specialproductsadapter : RecyclerView.Adapter<Specialproductsadapter.viewH
             binding.apply {
                 Glide.with(itemView).load(product.images?.get(0)).into(ProductImg)
                 ProductName.text = product.name
-//                ProductNewPrice.text = product.price.toString()
-                ProductOldPrice.text = product.offerPercentage.toString()
+                ProductNewPrice.text = "₹"+product.price.toString()
+                ProductOldPrice.text = "₹"+product.offerPercentage.toString()
                 ProductOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             }
         }
@@ -64,7 +64,6 @@ class Specialproductsadapter : RecyclerView.Adapter<Specialproductsadapter.viewH
 
         val product = differ.currentList[position]
         holder.bind(product)
-
 
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(product)

@@ -30,10 +30,9 @@ class ChairViewModel @Inject constructor():ViewModel(){
         viewModelScope.launch {
             _chair.emit (Resource.Loading())
         }
-        
 
         firebase.collection("Products")
-            .whereEqualTo("category","Chair").get().addOnSuccessListener { result ->
+            .whereEqualTo("category","Reebok").get().addOnSuccessListener { result ->
                 val ProductList=result.toObjects(product::class.java)
                 viewModelScope.launch {
                     _chair.emit(Resource.Success(ProductList))

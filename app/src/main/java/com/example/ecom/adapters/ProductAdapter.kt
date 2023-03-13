@@ -28,8 +28,8 @@ class ProductAdapter: RecyclerView.Adapter<ProductAdapter.viewHolder>() {
             binding.apply {
                 Glide.with(itemView).load(product.images?.get(0)).into(productImg)
                productName.text = product.name
-               productNewPrice.text = product.price.toString()
-                ProductOldp.text = product.offerPercentage.toString()
+               productNewPrice.text ="₹"+product.price.toString()
+                ProductOldp.text = "₹"+product.offerPercentage.toString()
                 ProductOldp.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             }
         }

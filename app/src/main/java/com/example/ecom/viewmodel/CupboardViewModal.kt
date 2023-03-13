@@ -31,7 +31,7 @@ class CupboardViewModal @Inject constructor() :ViewModel() {
 
 
         firebase.collection("Products")
-            .whereEqualTo("category","Cupboard").get().addOnSuccessListener { result ->
+            .whereEqualTo("category","Puma").get().addOnSuccessListener { result ->
                 val Pro=result.toObjects(product::class.java)
                 viewModelScope.launch {
                     _cup.emit(Resource.Success(Pro))

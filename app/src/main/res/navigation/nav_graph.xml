@@ -12,6 +12,12 @@
         <action
             android:id="@+id/action_cartFragment_to_detailedFragment"
             app:destination="@id/detailedFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_addressesListFragment"
+            app:destination="@id/addressesListFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -31,6 +37,12 @@
         <action
             android:id="@+id/action_profileFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_placeOrderFragment"
+            app:destination="@id/placeOrderFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_ordersFragment"
+            app:destination="@id/ordersFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailedFragment"
@@ -41,4 +53,42 @@
             android:name="product"
             app:argType="com.example.ecom.data.product" />
     </fragment>
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.example.ecom.fragments.AddressFragment"
+        android:label="AddressFragment" >
+        <action
+            android:id="@+id/action_addressFragment_self"
+            app:destination="@id/addressFragment" />
+        <action
+            android:id="@+id/action_addressFragment_to_addressesListFragment"
+            app:destination="@id/addressesListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressesListFragment"
+        android:name="com.example.ecom.fragments.AddressesListFragment"
+        android:label="fragment_addresses_list"
+        tools:layout="@layout/fragment_addresses_list" >
+        <action
+            android:id="@+id/action_addressesListFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <action
+            android:id="@+id/action_addressesListFragment_to_placeOrderFragment"
+            app:destination="@id/placeOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/placeOrderFragment"
+        android:name="com.example.ecom.fragments.PlaceOrderFragment"
+        android:label="PlaceOrderFragment" >
+        <action
+            android:id="@+id/action_placeOrderFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_placeOrderFragment_to_addressesListFragment"
+            app:destination="@id/addressesListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ordersFragment"
+        android:name="com.example.ecom.viewmodel.OrdersFragment"
+        android:label="OrdersFragment" />
 </navigation>

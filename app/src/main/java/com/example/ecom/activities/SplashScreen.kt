@@ -19,16 +19,17 @@ class SplashScreen : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        val backgroundImage: TextView= findViewById(R.id.intro_text)
+
+        val backgroundImage: TextView = findViewById(R.id.intro_text)
         val slideAnimation = AnimationUtils.loadAnimation(this, R.anim.side_slide)
         backgroundImage.startAnimation(slideAnimation)
         // we used the postDelayed(Runnable, time) method
         // to send a message with a delayed time.
         Handler().postDelayed({
-            val intent = Intent(this,SignInActivity::class.java)
+            val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
             finish()
-        }, 2500) // 3000 is the delayed time in milliseconds.
+        }, 4500) // 3000 is the delayed time in milliseconds.
 
     }
 }

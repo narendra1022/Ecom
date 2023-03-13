@@ -11,14 +11,14 @@
 
         android:layout_margin="8dp"
         android:layout_width="match_parent"
-        android:layout_height="178dp">
+        android:layout_height="248dp">
 
         <ImageView
             android:id="@+id/ProductImg"
             android:layout_width="200dp"
-            android:layout_height="174dp"
+            android:layout_height="244dp"
             android:scaleType="fitXY"
-            android:layout_marginEnd="14dp"
+            android:layout_marginEnd="4dp"
             android:src="@drawable/home"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,18 +26,18 @@
 
         <TextView
             android:id="@+id/ProductName"
-            android:layout_width="wrap_content"
+            android:layout_width="175dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="11dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="32dp"
             android:fontFamily="@font/poppins_light"
-            android:text="Scotch Premium"
+            android:text="Scotch Pre iuhrh8nkjnihfh83 f"
             android:textColor="@color/black"
-            android:textSize="23sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/btn_see_product"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/ProductNewPrice"
+            app:layout_constraintEnd_toStartOf="@id/ProductImg"
+            app:layout_constraintTop_toTopOf="@id/ProductImg"
             app:layout_constraintVertical_bias="0.4" />
 
         <TextView
@@ -68,20 +68,18 @@
             android:id="@+id/btn_see_product"
             android:layout_width="83dp"
             android:layout_height="28dp"
+            android:layout_marginEnd="100dp"
             android:background="@drawable/btn_background"
             android:fontFamily="@font/poppins_light"
-            android:text="Add To Cart"
+            android:text="View product"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:textStyle="bold"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ProductImg"
-            app:layout_constraintHorizontal_bias="0.145"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.784" />
+            app:layout_constraintVertical_bias="0.92" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

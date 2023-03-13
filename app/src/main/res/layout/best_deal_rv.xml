@@ -11,18 +11,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_margin="8dp"
         android:layout_width="match_parent"
-        android:layout_height="185dp">
+        android:layout_height="205dp">
 
         <ImageView
             android:id="@+id/ProductImg"
             android:layout_width="220dp"
-            android:layout_height="178dp"
-
+            android:layout_height="198dp"
+            android:scaleType="fitXY"
+            android:layout_marginStart="6dp"
+            android:src="@drawable/home"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/home" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/name"
@@ -70,8 +70,8 @@
             android:layout_width="83dp"
             android:layout_height="28dp"
 
-            android:layout_marginTop="108dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="160dp"
             android:background="@drawable/btn_background"
             android:fontFamily="@font/poppins_light"
             android:text="See Product"
@@ -81,7 +81,7 @@
             android:textStyle="bold"
 
             app:layout_constraintEnd_toEndOf="@+id/nprice"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.03"
             app:layout_constraintStart_toEndOf="@+id/ProductImg"
             app:layout_constraintTop_toTopOf="@id/name"
             tools:ignore="MissingConstraints" />

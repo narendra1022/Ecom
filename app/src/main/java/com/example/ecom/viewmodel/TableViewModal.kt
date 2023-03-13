@@ -28,7 +28,7 @@ class TableViewModal @Inject constructor():ViewModel() {
             _table.emit(Resource.Loading())
         }
         firestore.collection("Products")
-            .whereEqualTo("category","Table").get().addOnSuccessListener {result ->
+            .whereEqualTo("category","Nike").get().addOnSuccessListener {result ->
                 val list= result.toObjects(product::class.java)
 
                 viewModelScope.launch {

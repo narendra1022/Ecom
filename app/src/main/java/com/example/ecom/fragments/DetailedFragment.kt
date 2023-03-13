@@ -1,5 +1,6 @@
 package com.example.ecom.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -80,14 +81,17 @@ class DetailedFragment : Fragment() {
 
 
 
-            val li= hashMapOf("name" to binding.Name.text.toString() ,"price" to binding.price.text.toString() ,"dezcription" to binding.Descriptiion.text.toString() ,"images" to produc.images)
+            val li= hashMapOf("name" to binding.Name.text.toString() ,"price" to binding.price.text,"dezcription" to binding.Descriptiion.text.toString() ,"images" to produc.images,"ref" to "9014")
 
+            binding.buttonAddToCart.startAnimation()
 
             db.collection("users")
                 .document(auth.uid!!).collection("cart").add(
                     li
                     ).addOnSuccessListener {
                     Toast.makeText(requireContext(), "Added to cart", Toast.LENGTH_SHORT).show()
+                    binding.buttonAddToCart.revertAnimation()
+                    binding.buttonAddToCart.setBackgroundColor(Color.DKGRAY)
                 }.addOnFailureListener {
                     Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
                 }
@@ -101,7 +105,7 @@ class DetailedFragment : Fragment() {
 
         binding.apply {
             Name.text=produc.name
-            price.text= produc.price.toString()
+            price.text=produc.price.toString()
             Descriptiion.text=produc.description
         }
 

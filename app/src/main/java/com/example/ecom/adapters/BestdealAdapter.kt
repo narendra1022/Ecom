@@ -28,8 +28,8 @@ class BestdealAdapter: RecyclerView.Adapter<BestdealAdapter.viewHolder>() {
             binding.apply {
                 Glide.with(itemView).load(product.images?.get(0)).into(ProductImg)
                 name.text=product.name
-                nprice.text=product.price.toString()
-                oprice.text=product.offerPercentage.toString()
+                nprice.text="₹"+product.price.toString()
+                oprice.text="₹"+product.offerPercentage.toString()
                 oprice.paintFlags= Paint.STRIKE_THRU_TEXT_FLAG
             }
         }

@@ -11,11 +11,13 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -34,24 +36,13 @@ import java.util.*
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
-    private lateinit var firestore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
     private var uri: Uri? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        auth= FirebaseAuth.getInstance()
-        FirebaseFirestore.getInstance().collection("users").document(auth.uid!!).get()
-            .addOnSuccessListener {
 
-                Glide.with(requireContext()).load(it.get("profile pic"))
-                    .into(binding.profilePicAccSection)
 
-                binding.userNameAccSection.text = it.getString("name")
-
-                binding.phoneNumAccSection.text = it.getString("phone")
-
-            }
     }
 
     override fun onCreateView(
@@ -75,8 +66,25 @@ class ProfileFragment : Fragment() {
 
         }
 
+        binding.ordersTv.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_ordersFragment)
+        }
+
         binding.home.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
+        }
+
+        binding.aboutUsAccSectionTV.setOnClickListener {
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("About Us")
+            val k="Thank you for choosing this app! We hope you enjoy shopping with us and finding the " +
+                    "perfect pair of shoes that    will take you wherever you need to go."
+            builder.setMessage(k)
+            builder.setPositiveButton("OK") { dialog, which ->
+                // Handle OK button click
+            }
+            val dialog = builder.create()
+            dialog.show()
         }
 
         binding.editprofile.setOnClickListener {
@@ -122,16 +130,20 @@ class ProfileFragment : Fragment() {
         addEmailbtn.setOnClickListener {
 
             val mail = addEmail.text.toString()
-            if (mail.length.equals(0)){
+            if (mail.length.equals(0)) {
                 Toast.makeText(requireContext(), "Enter name", Toast.LENGTH_SHORT).show()
-            }
-            else{
+            } else {
                 FirebaseFirestore.getInstance().collection("users").document(auth.uid!!)
                     .update("name", mail).addOnSuccessListener {
-                        Toast.makeText(requireContext(), "Name updated Succesfully", Toast.LENGTH_SHORT)
+                        Toast.makeText(
+                            requireContext(),
+                            "Name updated Succesfully",
+                            Toast.LENGTH_SHORT
+                        )
                             .show()
 
-                        FirebaseFirestore.getInstance().collection("users").document(auth.uid!!).get()
+                        FirebaseFirestore.getInstance().collection("users").document(auth.uid!!)
+                            .get()
                             .addOnSuccessListener {
 
                                 binding.userNameAccSection.text = it.getString("name")

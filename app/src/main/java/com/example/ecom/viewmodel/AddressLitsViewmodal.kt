@@ -2,8 +2,10 @@ package com.example.ecom.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.ecom.data.addressData
 import com.example.ecom.data.product
 import com.example.ecom.util.Resource
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -11,12 +13,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class FurnitureViewModal @Inject constructor()  :ViewModel() {
+class AddressLitsViewmodal @Inject constructor(): ViewModel(){
 
     private val firebase= Firebase.firestore
 
-    val _c= MutableStateFlow<Resource<List<product>>>(Resource.unspecified())
-    val c: StateFlow<Resource<List<product>>> = _c
+    val _list= MutableStateFlow<Resource<List<addressData>>>(Resource.unspecified())
+    val list: StateFlow<Resource<List<addressData>>> = _list
 
 
     init {
@@ -26,22 +28,22 @@ class FurnitureViewModal @Inject constructor()  :ViewModel() {
     private fun fetchdata() {
 
         viewModelScope.launch {
-            _c.emit (Resource.Loading())
+            _list.emit (Resource.Loading())
         }
 
 
-        firebase.collection("Products")
-            .whereEqualTo("category","Adidas").get().addOnSuccessListener { result ->
-                val ProductList=result.toObjects(product::class.java)
+        firebase.collection("users").document(FirebaseAuth.getInstance().uid!!).collection("Addresses")
+            .get().addOnSuccessListener { result ->
+                val ProductList=result.toObjects(addressData::class.java)
                 viewModelScope.launch {
-                    _c.emit(Resource.Success(ProductList))
+                    _list.emit(Resource.Success(ProductList))
                 }
 
             }
 
             .addOnFailureListener {
                 viewModelScope.launch {
-                    _c.emit(Resource.Error(it.message.toString()))
+                    _list.emit(Resource.Error(it.message.toString()))
                 }
             }
     }

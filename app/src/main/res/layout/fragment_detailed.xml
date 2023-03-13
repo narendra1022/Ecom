@@ -9,7 +9,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@id/buttonAddToCart"
+        app:layout_constraintBottom_toTopOf="parent"
         android:fillViewport="true"
         android:overScrollMode="never"
         >
@@ -20,7 +20,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/card"
                 android:layout_width="match_parent"
-                android:layout_height="450dp"
+                android:layout_height="550dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
@@ -50,6 +50,8 @@
                 android:id="@+id/ll"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="10dp"
+
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -73,41 +75,43 @@
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_thin"
                 android:text="5000"
                 android:textColor="@color/black"
                 android:textSize="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/poppins_thin"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.046"
+                app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ll" />
 
-            <TextView
-                android:id="@+id/Descriptiion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Descriptioin"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="4dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.046"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/price" />
             <LinearLayout
                 android:id="@+id/l"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Descriptiion"
+                app:layout_constraintTop_toBottomOf="@id/price"
                 android:layout_width="0dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginStart="23dp"
                 android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/Descriptiion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descriptioin"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="14dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.046"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/price" />
+
 
                 <TextView
                     android:id="@+id/Color"
@@ -125,23 +129,40 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"/>
 
+                <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+                    android:id="@+id/buttonAddToCart"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginEnd="20dp"
+                    style="@style/blueButtonStyle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="13dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:text="Purchase"
+                    app:spinning_bar_color="@color/black" />
+
+
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="₹"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toTopOf="@id/l"
+                app:layout_constraintEnd_toStartOf="@id/price"
+                app:layout_constraintHorizontal_bias="0.766"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ll"
+                app:layout_constraintVertical_bias="0.888" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
-        android:id="@+id/buttonAddToCart"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        style="@style/blueButtonStyle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="13dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Purchase"
-        app:spinning_bar_color="@color/black" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
