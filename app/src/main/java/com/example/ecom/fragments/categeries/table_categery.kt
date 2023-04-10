@@ -79,9 +79,6 @@ class table_categery:Fragment(){
     private fun SetupBestProductR() {
 
         pa= ProductAdapter()
-        val snapHelper:SnapHelper=LinearSnapHelper()
-        snapHelper.attachToRecyclerView(binding.tablerv)
-
         binding.tablerv.apply {
             layoutManager=GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
             val  adapter=pa

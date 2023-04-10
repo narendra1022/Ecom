@@ -81,8 +81,7 @@ class cupboard_categery:Fragment() {
     private fun setupBestProductRV() {
 
         bdap= BestdealAdapter()
-        val snapHelper: SnapHelper = LinearSnapHelper()
-        snapHelper.attachToRecyclerView(binding.cupboardrv)
+
 
         binding.cupboardrv.apply {
             layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)

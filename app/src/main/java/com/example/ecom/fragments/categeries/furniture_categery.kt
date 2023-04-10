@@ -79,8 +79,7 @@ class furniture_categery:Fragment() {
     private fun SetupBestProductRV() {
 
         spa=Specialproductsadapter()
-        val snapHelper: SnapHelper = LinearSnapHelper()
-        snapHelper.attachToRecyclerView(binding.furniturerv)
+
 
         binding.furniturerv.apply {
             layoutManager= LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)

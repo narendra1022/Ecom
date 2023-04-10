@@ -39,8 +39,7 @@ open class BaseCategery:Fragment(R.layout.fragment_base_categery) {
     private fun setupBestProductsRv() {
 
         bestProductAdapter= ProductAdapter()
-        val snapHelper: SnapHelper = LinearSnapHelper()
-        snapHelper.attachToRecyclerView(binding.bestproductsrv)
+
         binding.bestproductsrv.apply {
             layoutManager= GridLayoutManager(requireContext(),2, GridLayoutManager.VERTICAL,false)
             adapter=bestProductAdapter
@@ -54,8 +53,7 @@ open class BaseCategery:Fragment(R.layout.fragment_base_categery) {
 
 
         offerAdapter= ProductAdapter()
-        val snapHelper: SnapHelper = LinearSnapHelper()
-        snapHelper.attachToRecyclerView(binding.offerrv)
+
         binding.offerrv.apply {
             layoutManager=GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
             adapter=offerAdapter

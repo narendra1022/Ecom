@@ -82,8 +82,7 @@ class chair_categery:Fragment() {
     private fun SetupBestProductRV() {
 
         spad=ProductAdapter()
-        val snapHelper:SnapHelper=LinearSnapHelper()
-        snapHelper.attachToRecyclerView(binding.chairrv)
+
 
         binding.chairrv.apply {
             layoutManager=GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
