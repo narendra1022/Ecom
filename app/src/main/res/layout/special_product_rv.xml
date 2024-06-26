@@ -4,43 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="15dp"
     android:background="@color/g_gray500"
-    >
+    android:elevation="15dp"
+    android:fadingEdge="horizontal"
+    app:cardCornerRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
-        android:layout_margin="8dp"
         android:layout_width="match_parent"
-        android:layout_height="248dp">
+        android:layout_height="235dp">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ProductImg"
             android:layout_width="200dp"
             android:layout_height="244dp"
             android:scaleType="fitXY"
-            android:layout_marginEnd="4dp"
             android:src="@drawable/home"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize20" />
 
         <TextView
             android:id="@+id/ProductName"
-            android:layout_width="175dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="32dp"
-            android:layout_marginStart="10dp"
-
+            android:paddingStart="10dp"
+            android:paddingTop="15dp"
             android:fontFamily="@font/poppins_light"
-            android:text="Scotch Pre iuhrh8nkjnihfh83 f"
+            android:text="Scotch Pre jqvuuqquv jvdv"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/ProductImg"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/ProductImg"
-            app:layout_constraintVertical_bias="0.4" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.1" />
+
+        <TextView
+            android:id="@+id/ProductNewPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_display"
+            android:text="$1600 RS"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:paddingStart="10dp"
+            app:layout_constraintStart_toStartOf="@id/ProductName"
+            app:layout_constraintTop_toBottomOf="@id/ProductName" />
 
         <TextView
             android:id="@+id/ProductOldPrice"
@@ -55,36 +69,22 @@
             app:layout_constraintTop_toBottomOf="@id/ProductName"
             tools:ignore="HardcodedText" />
 
-        <TextView
-            android:id="@+id/ProductNewPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/sf_pro_display"
-            android:text="$1600 RS"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@id/ProductName"
-            app:layout_constraintTop_toBottomOf="@id/ProductName" />
-
         <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/btn_see_product"
-            android:layout_width="83dp"
+            android:layout_width="0dp"
             android:layout_height="28dp"
-            android:layout_marginEnd="100dp"
             android:background="@drawable/btn_background"
             android:fontFamily="@font/poppins_light"
             android:text="View product"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            android:layout_marginStart="10dp"
             android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ProductImg"
+            app:layout_constraintEnd_toStartOf="@id/ProductImg"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.92" />
-
+            app:layout_constraintTop_toBottomOf="@id/ProductNewPrice"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

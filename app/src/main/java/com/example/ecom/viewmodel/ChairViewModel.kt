@@ -13,33 +13,31 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
-class ChairViewModel @Inject constructor():ViewModel(){
+class ChairViewModel @Inject constructor(
 
-    private val firebase=Firebase.firestore
+) : ViewModel() {
 
-    val _chair=MutableStateFlow<Resource<List<product>>>(Resource.unspecified())
-    val chair:StateFlow<Resource<List<product>>> = _chair
+    private val firebase = Firebase.firestore
 
+    val _chair = MutableStateFlow<Resource<List<product>>>(Resource.unspecified())
+    val chair: StateFlow<Resource<List<product>>> = _chair
 
     init {
         fetchdata()
     }
-
     private fun fetchdata() {
 
         viewModelScope.launch {
-            _chair.emit (Resource.Loading())
+            _chair.emit(Resource.Loading())
         }
 
         firebase.collection("Products")
-            .whereEqualTo("category","Reebok").get().addOnSuccessListener { result ->
-                val ProductList=result.toObjects(product::class.java)
+            .whereEqualTo("category", "Reebok").get().addOnSuccessListener { result ->
+                val ProductList = result.toObjects(product::class.java)
                 viewModelScope.launch {
                     _chair.emit(Resource.Success(ProductList))
                 }
-
             }
-
             .addOnFailureListener {
                 viewModelScope.launch {
                     _chair.emit(Resource.Error(it.message.toString()))

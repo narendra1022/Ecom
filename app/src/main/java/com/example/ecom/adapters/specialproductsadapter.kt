@@ -3,20 +3,13 @@ package com.example.ecom.adapters
 import android.annotation.SuppressLint
 import android.graphics.Paint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.ecom.R
-import com.example.ecom.data.SpecialProductDataClass
 import com.example.ecom.data.product
-import com.example.ecom.databinding.FragmentHomeBinding
 import com.example.ecom.databinding.SpecialProductRvBinding
-import dagger.hilt.android.AndroidEntryPoint
 
 
 class Specialproductsadapter : RecyclerView.Adapter<Specialproductsadapter.viewHolder>() {
@@ -30,8 +23,8 @@ class Specialproductsadapter : RecyclerView.Adapter<Specialproductsadapter.viewH
             binding.apply {
                 Glide.with(itemView).load(product.images?.get(0)).into(ProductImg)
                 ProductName.text = product.name
-                ProductNewPrice.text = "₹"+product.price.toString()
-                ProductOldPrice.text = "₹"+product.offerPercentage.toString()
+                ProductNewPrice.text = "₹" + product.price.toString()
+                ProductOldPrice.text = "₹" + product.offerPercentage.toString()
                 ProductOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             }
         }

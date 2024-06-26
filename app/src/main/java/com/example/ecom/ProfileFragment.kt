@@ -77,8 +77,9 @@ class ProfileFragment : Fragment() {
         binding.aboutUsAccSectionTV.setOnClickListener {
             val builder = AlertDialog.Builder(context)
             builder.setTitle("About Us")
-            val k="Thank you for choosing this app! We hope you enjoy shopping with us and finding the " +
-                    "perfect pair of shoes that    will take you wherever you need to go."
+            val k =
+                "Thank you for choosing this app! We hope you enjoy shopping with us and finding the " +
+                        "perfect pair of shoes that    will take you wherever you need to go."
             builder.setMessage(k)
             builder.setPositiveButton("OK") { dialog, which ->
                 // Handle OK button click

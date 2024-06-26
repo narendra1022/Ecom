@@ -6,31 +6,22 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.*
+import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.ecom.R
 import com.example.ecom.databinding.FragmentPlaceOrderBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import nl.dionsegijn.konfetti.core.Party
 import nl.dionsegijn.konfetti.core.Position
 import nl.dionsegijn.konfetti.core.emitter.Emitter
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
-import kotlin.properties.Delegates
 
 class PlaceOrderFragment : Fragment() {
 
@@ -105,24 +96,23 @@ class PlaceOrderFragment : Fragment() {
             binding.tvQty.text = "${task.size()} Items"
         }
 
-        var pr=0
+        var pr = 0
 
         val coll =
             db.collection("users").document(auth.uid!!)
                 .collection("cart")
-        coll.whereEqualTo("ref","9014").get().addOnSuccessListener { task ->
+        coll.whereEqualTo("ref", "9014").get().addOnSuccessListener { task ->
             for (document in task) {
                 // Access the data of the matching document
                 val name = document.getString("price")
-                try{
-                pr+=name.toString().toDouble().toInt()
-                }
-                catch (e: NumberFormatException) {
+                try {
+                    pr += name.toString().toDouble().toInt()
+                } catch (e: NumberFormatException) {
                     Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
                 }
             }
-            binding.tvTotal.text= "₹ "+pr.toString()
-            binding.tvCostt.text="₹ "+pr.toString()
+            binding.tvTotal.text = "₹ " + pr.toString()
+            binding.tvCostt.text = "₹ " + pr.toString()
 
         }
             .addOnFailureListener {
@@ -160,8 +150,8 @@ class PlaceOrderFragment : Fragment() {
 
             //Adding data to the Orders collection
 
-            val db=FirebaseFirestore.getInstance()
-            val auth=FirebaseAuth.getInstance()
+            val db = FirebaseFirestore.getInstance()
+            val auth = FirebaseAuth.getInstance()
 
             val collectionRef = db.collection("users").document(auth.uid!!).collection("cart")
             collectionRef.get()
@@ -170,7 +160,8 @@ class PlaceOrderFragment : Fragment() {
                     query.forEach { documentSnapshot ->
                         val data = documentSnapshot.data
                         // process data here
-                        val destinationCollectionRef = db.collection("users").document(auth.uid!!).collection("Orders")
+                        val destinationCollectionRef =
+                            db.collection("users").document(auth.uid!!).collection("Orders")
                         destinationCollectionRef.document().set(data)
                             .addOnSuccessListener {
                                 // document added successfully
@@ -196,7 +187,7 @@ class PlaceOrderFragment : Fragment() {
             coll.whereEqualTo("ref", "9014").get().addOnSuccessListener { task ->
                 for (document in task) {
                     // Access the data of the matching document
-                    val documentId=document.id
+                    val documentId = document.id
                     coll.document(documentId).delete().addOnSuccessListener {
 
                     }
@@ -207,7 +198,6 @@ class PlaceOrderFragment : Fragment() {
                 .addOnFailureListener {
 
                 }
-
 
 
         }

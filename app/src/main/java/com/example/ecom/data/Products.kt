@@ -1,8 +1,6 @@
 package com.example.ecom.data
 
-import com.google.firebase.storage.StorageReference
-
-data class products (
+data class products(
     var Address: String? = null,
     var Category: String? = null,
     var Description: String? = null,

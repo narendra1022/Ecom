@@ -7,30 +7,30 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
-import com.example.ecom.databinding.SpecialProductRvBinding
 import com.example.ecom.databinding.ViewpagerImageItemBinding
 
 class viewpagerimages : RecyclerView.Adapter<viewpagerimages.ViewHolder>() {
 
-    inner class ViewHolder( val bindind: ViewpagerImageItemBinding):RecyclerView.ViewHolder(bindind.root){
-                fun bind(imagepath:String){
-                    Glide.with(itemView).load(imagepath).into(bindind.imageProductDetails)
-                }
+    inner class ViewHolder(val bindind: ViewpagerImageItemBinding) :
+        RecyclerView.ViewHolder(bindind.root) {
+        fun bind(imagepath: String) {
+            Glide.with(itemView).load(imagepath).into(bindind.imageProductDetails)
+        }
     }
 
 
-    private val diffCallback =object :DiffUtil.ItemCallback<String>(){
+    private val diffCallback = object : DiffUtil.ItemCallback<String>() {
         override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
-            return oldItem==newItem
+            return oldItem == newItem
         }
 
         override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
-            return oldItem==newItem
+            return oldItem == newItem
         }
 
     }
 
-    val differ=AsyncListDiffer(this,diffCallback)
+    val differ = AsyncListDiffer(this, diffCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -38,7 +38,6 @@ class viewpagerimages : RecyclerView.Adapter<viewpagerimages.ViewHolder>() {
                 LayoutInflater.from(parent.context), parent, false
             )
         )
-
 
 
     }

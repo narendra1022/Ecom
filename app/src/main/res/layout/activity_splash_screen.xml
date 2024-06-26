@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.SplashScreen">
+
     <ImageView
         android:id="@+id/left_texture"
         android:layout_width="120dp"
@@ -32,39 +33,31 @@
         app:layout_constraintVertical_bias="0.498" />
 
     <ImageView
-        android:id="@+id/intro_text"
-        android:layout_width="290dp"
-        android:layout_height="200dp"
-        android:fontFamily="@font/poppins_thin"
+        android:id="@+id/shoe_img"
+        android:layout_width="wrap_content"
+        android:layout_height="235dp"
         android:gravity="center"
-        android:src="@drawable/shoes"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:src="@drawable/img"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.532" />
+        app:layout_constraintVertical_bias="0.499" />
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="HAVE A GREAT SHOPPING EXPERIENCE"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.824" />
+<!--    <TextView-->
+<!--        android:id="@+id/intro_text"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="85dp"-->
+<!--        android:fontFamily="@font/poppins_thin"-->
+<!--        android:text="Looking for Shoe ? your at correct \n                          Place"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="16sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/shoe_img" />-->
+
 
     <ImageView
         android:id="@+id/right_texture"

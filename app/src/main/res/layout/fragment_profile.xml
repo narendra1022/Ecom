@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-   >
+    android:background="@color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -35,8 +34,7 @@
                     android:layout_gravity="center_horizontal"
                     android:clickable="true"
                     android:focusable="true"
-                    android:scaleType="centerCrop"
-                    />
+                    android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
@@ -70,8 +68,8 @@
                     android:layout_marginBottom="5dp"
                     android:textColor="@color/black"
                     android:textSize="23sp"
-                    tools:text="User name"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:text="User name" />
             </LinearLayout>
 
 
@@ -187,8 +185,8 @@
                         android:id="@+id/orders_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5sp"
                         android:layout_marginStart="10sp"
+                        android:layout_marginTop="5sp"
                         android:orientation="horizontal">
 
 
@@ -263,7 +261,6 @@
                     </LinearLayout>
 
 
-
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2sp"
@@ -329,7 +326,6 @@
                             android:textSize="19sp" />
 
                     </LinearLayout>
-
 
 
                     <LinearLayout

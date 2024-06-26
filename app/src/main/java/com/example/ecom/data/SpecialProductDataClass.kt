@@ -5,7 +5,7 @@ import android.os.Parcelable
 
 class SpecialProductDataClass(
     val productName: String?, val productImage: Int, val oldprice: String?, val newprice: String?
-):Parcelable {
+) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readInt(),

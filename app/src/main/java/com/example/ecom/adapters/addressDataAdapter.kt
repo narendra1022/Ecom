@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecom.R
 import com.example.ecom.data.addressData
@@ -66,7 +65,6 @@ class addressDataAdapter(
             val activity = it.context as AppCompatActivity
             activity.supportFragmentManager.beginTransaction().addToBackStack(null)
                 .replace(R.id.fram, fragment).commit()
-
 
 
         }

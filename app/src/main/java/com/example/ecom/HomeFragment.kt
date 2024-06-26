@@ -37,6 +37,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         binding.viewpager.isUserInputEnabled=false
 
+        binding.search.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+        }
+
         val v=basecategeryAdapter(categories,childFragmentManager,lifecycle)
         binding.viewpager.adapter=v
         val tabLayout=view.findViewById<TabLayout>(R.id.tablayout)

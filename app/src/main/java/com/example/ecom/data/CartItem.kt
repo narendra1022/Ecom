@@ -10,7 +10,7 @@ data class CartItem(
     @PrimaryKey(autoGenerate = true) val Id: Int?,
     @ColumnInfo(name = "cart_item_id") val cartItemId: String?,
     @ColumnInfo(name = "cart_item_name") val cartItemName: String?,
-    @ColumnInfo(name= "price_per_unit") val pricePerUnit: String?,
-    @ColumnInfo(name= "quantity") val quantity: Int?,
-    @ColumnInfo(name="subtotal") val subtotal:Int?
+    @ColumnInfo(name = "price_per_unit") val pricePerUnit: String?,
+    @ColumnInfo(name = "quantity") val quantity: Int?,
+    @ColumnInfo(name = "subtotal") val subtotal: Int?
 )

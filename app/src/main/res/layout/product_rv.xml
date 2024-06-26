@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/g_line">
+    android:layout_margin="9dp"
+    android:layout_marginStart="9dp"
+    android:layout_marginEnd="9dp"
+    android:background="@color/g_line"
+    android:elevation="10dp"
+    android:fadingEdge="horizontal"
+    app:cardCornerRadius="20dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_marginEnd="9dp"
-        android:layout_marginStart="9dp"
-        android:layout_margin="9dp"
         android:layout_width="wrap_content"
-        android:background="@color/g_line"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@color/g_line">
 
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/productImg"
             android:layout_width="200dp"
             android:layout_height="211dp"
-            android:scaleType="fitXY"
-
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
             android:src="@drawable/home"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/linear_product_name"
+            app:layout_constraintDimensionRatio="16:9"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize20" />
 
         <LinearLayout
             android:id="@+id/linear_product_name"
@@ -37,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
+            android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="@id/productImg"
             app:layout_constraintStart_toStartOf="@id/productImg"
             app:layout_constraintTop_toBottomOf="@id/productImg">
@@ -65,7 +68,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/ProductOldp"
+            android:id="@+id/ProductOld"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

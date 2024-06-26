@@ -29,5 +29,5 @@ object AppModule {
     fun providecommonfirebase(
         firebaseAuth: FirebaseAuth,
         firestore: FirebaseFirestore
-    )=commonFirebase(firestore,firebaseAuth)
+    ) = commonFirebase(firestore, firebaseAuth)
 }

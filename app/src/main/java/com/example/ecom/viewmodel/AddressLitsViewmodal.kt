@@ -3,7 +3,6 @@ package com.example.ecom.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ecom.data.addressData
-import com.example.ecom.data.product
 import com.example.ecom.util.Resource
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore

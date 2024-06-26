@@ -27,9 +27,9 @@ import kotlinx.coroutines.flow.collectLatest
 
 class home_categery : Fragment(R.layout.fragment_home_categery) {
 
-    private lateinit var spad:Specialproductsadapter
-    private lateinit var bdpa:BestdealAdapter
-    private lateinit var pa:ProductAdapter
+    private lateinit var spad: Specialproductsadapter
+    private lateinit var bdpa: BestdealAdapter
+    private lateinit var pa: ProductAdapter
     private lateinit var binding: FragmentHomeCategeryBinding
 
     private val viewmodel by viewModels<HomeCategeryViewModel>()
@@ -50,75 +50,84 @@ class home_categery : Fragment(R.layout.fragment_home_categery) {
         SetupBestDealRV()
         SetupBestProductRV()
 
-       spad.onItemClick={
-           val b=Bundle().apply { putParcelable("product",it) }
-           findNavController().navigate(R.id.action_homeFragment_to_detailedFragment,b)
-       }
-        bdpa.onItemClick={
-            val b=Bundle().apply { putParcelable("product",it) }
-            findNavController().navigate(R.id.action_homeFragment_to_detailedFragment,b)
+        spad.onItemClick = {
+            val b = Bundle().apply { putParcelable("product", it) }
+            findNavController().navigate(R.id.action_homeFragment_to_detailedFragment, b)
         }
-        pa.onItemClick={
-            val b=Bundle().apply { putParcelable("product",it) }
-            findNavController().navigate(R.id.action_homeFragment_to_detailedFragment,b)
+        bdpa.onItemClick = {
+            val b = Bundle().apply { putParcelable("product", it) }
+            findNavController().navigate(R.id.action_homeFragment_to_detailedFragment, b)
+        }
+        pa.onItemClick = {
+            val b = Bundle().apply { putParcelable("product", it) }
+            findNavController().navigate(R.id.action_homeFragment_to_detailedFragment, b)
         }
 
         lifecycleScope.launchWhenStarted {
             viewmodel.specialproduct.collectLatest {
-                when(it) {
+                when (it) {
                     is Resource.Loading -> {
                         showLoading()
                     }
+
                     is Resource.Success -> {
                         spad.differ.submitList(it.data)
                         hideLoading()
                     }
+
                     is Resource.Error -> {
                         hideLoading()
 
                         Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
                     }
-                    else ->Unit
+
+                    else -> Unit
 
                 }
             }
         }
         lifecycleScope.launchWhenStarted {
             viewmodel.bestdealproducts.collectLatest {
-                when(it) {
+                when (it) {
                     is Resource.Loading -> {
                         showLoading()
                     }
+
                     is Resource.Success -> {
                         bdpa.differ.submitList(it.data)
                         hideLoading()
                     }
+
                     is Resource.Error -> {
                         hideLoading()
 
                         Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
                     }
-                    else ->Unit
+
+                    else -> Unit
 
                 }
             }
         }
         lifecycleScope.launchWhenStarted {
             viewmodel.bestproducts.collectLatest {
-                when(it) {
+                when (it) {
                     is Resource.Loading -> {
                         showLoading()
                     }
+
                     is Resource.Success -> {
                         pa.differ.submitList(it.data)
                         hideLoading()
                     }
+
                     is Resource.Error -> {
                         hideLoading()
 
                         Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
                     }
-                    else ->Unit
+
+                    else -> Unit
 
                 }
             }
@@ -128,47 +137,50 @@ class home_categery : Fragment(R.layout.fragment_home_categery) {
 
     private fun SetupBestDealRV() {
 
-        bdpa= BestdealAdapter()
+        bdpa = BestdealAdapter()
         val snapHelper: SnapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(binding.bestdealsrv)
         binding.bestdealsrv.apply {
-            layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-            val adapter=bdpa
-            binding.bestdealsrv.adapter=adapter
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            val adapter = bdpa
+            binding.bestdealsrv.adapter = adapter
         }
 
     }
 
     private fun SetupBestProductRV() {
 
-        pa= ProductAdapter()
+        pa = ProductAdapter()
 //        val snapHelper: SnapHelper = LinearSnapHelper()
 //        snapHelper.attachToRecyclerView(binding.bestproductsrv)
         binding.bestproductsrv.apply {
-            layoutManager=GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
-            val adapter=pa
-            binding.bestproductsrv.adapter=adapter
+            layoutManager =
+                GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
+            val adapter = pa
+            binding.bestproductsrv.adapter = adapter
         }
 
     }
 
     private fun showLoading() {
-        binding.pb1.visibility=View.VISIBLE
+        binding.pb1.visibility = View.VISIBLE
     }
 
     private fun hideLoading() {
-        binding.pb1.visibility=View.INVISIBLE
+        binding.pb1.visibility = View.INVISIBLE
     }
 
     private fun SetupSpecialProductRv() {
 
-        spad= Specialproductsadapter()
+        spad = Specialproductsadapter()
         val snapHelper: SnapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(binding.specialrv)
         binding.specialrv.apply {
-            layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-            val adapter=spad
-            binding.specialrv.adapter=adapter
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            val adapter = spad
+            binding.specialrv.adapter = adapter
         }
 
 

@@ -6,12 +6,13 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import com.example.ecom.data.User
 import com.example.ecom.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.util.*
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -24,6 +25,14 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivitySignUpBinding.inflate(layoutInflater)
+
+        WindowCompat.setDecorFitsSystemWindows(window, true)
+        val windowInsetsController =
+            ViewCompat.getWindowInsetsController(window.decorView)
+
+        windowInsetsController?.isAppearanceLightNavigationBars = true
+        windowInsetsController?.isAppearanceLightStatusBars = true
+
         setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
@@ -32,10 +41,10 @@ class SignUpActivity : AppCompatActivity() {
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
         }
-        binding.button.setOnClickListener {
+        binding.registerBtn.setOnClickListener {
 
             val email = binding.emailEt.text.toString()
-            val pass = binding.passET.text.toString()
+            val pass = binding.passEt.text.toString()
             val confirmPass = binding.confirmPassEt.text.toString()
             val name = binding.nameEt.text.toString()
             val phone = binding.phoneEt.text.toString()

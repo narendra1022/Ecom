@@ -2,13 +2,10 @@ package com.example.ecom.Cart.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.ecom.cartFragment
 import com.example.ecom.data.cartadata
 import com.example.ecom.databinding.CartItemBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -37,20 +34,18 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.viewHolder>() {
                     FirebaseFirestore.getInstance().collection("users")
                         .document(FirebaseAuth.getInstance().uid!!)
                         .collection("cart")
-                coll.whereEqualTo("name", binding.ProductName.text.toString()).get().addOnSuccessListener { task ->
-                    for (document in task) {
-                        // Access the data of the matching document
-                        val documentId=document.id
-                        coll.document(documentId).delete().addOnSuccessListener {
-
-                            notifyDataSetChanged()
-
-                            binding.Remove.text="deleted successfully"
+                coll.whereEqualTo("name", binding.ProductName.text.toString()).get()
+                    .addOnSuccessListener { task ->
+                        for (document in task) {
+                            // Access the data of the matching document
+                            val documentId = document.id
+                            coll.document(documentId).delete().addOnSuccessListener {
+                                notifyDataSetChanged()
+                            }
                         }
+
+
                     }
-
-
-                }
                     .addOnFailureListener {
 
                     }

@@ -12,6 +12,6 @@ data class addressData(
     var city: String? = null,
     var state: String? = null,
     var pincode: String? = null
-): Parcelable {
-    constructor() : this("","","","","","","")
+) : Parcelable {
+    constructor() : this("", "", "", "", "", "", "")
 }

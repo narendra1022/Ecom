@@ -1,31 +1,47 @@
 package com.example.ecom.activities
 
-import androidx.appcompat.app.AppCompatActivity
+import ShoppingViewModel
 import android.os.Bundle
-import androidx.fragment.app.FragmentTransaction
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
-import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.ecom.Communicator
 import com.example.ecom.R
-import com.example.ecom.fragments.categeries.home_categery
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView
+import com.example.ecom.viewmodel.FirebaseDb
+import com.example.ecom.viewmodel.ShoppingViewModelProviderFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
+
 @AndroidEntryPoint
 class shopping : AppCompatActivity() {
     private lateinit var navController: NavController
+    val viewModel by lazy {
+        val fDatabase = FirebaseDb()
+        val providerFactory = ShoppingViewModelProviderFactory(fDatabase)
+        ViewModelProvider(this, providerFactory)[ShoppingViewModel::class.java]
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        WindowCompat.setDecorFitsSystemWindows(window, true)
+        val windowInsetsController =
+            ViewCompat.getWindowInsetsController(window.decorView)
+
+        windowInsetsController?.isAppearanceLightNavigationBars = true
+        windowInsetsController?.isAppearanceLightStatusBars = true
+
         setContentView(R.layout.activity_shopping)
 
-        val navHostFragment=supportFragmentManager.findFragmentById(R.id.nav) as NavHostFragment
 
-        navController=navHostFragment.navController
-        val b=findViewById<BottomNavigationView>(R.id.navbar)
-        setupWithNavController(b,navController)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav) as NavHostFragment
+
+        navController = navHostFragment.navController
+        val b = findViewById<BottomNavigationView>(R.id.navbar)
+        setupWithNavController(b, navController)
     }
 
 }

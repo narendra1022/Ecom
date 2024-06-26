@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_homeFragment_to_detailedFragment"
             app:destination="@id/detailedFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -91,4 +94,15 @@
         android:id="@+id/ordersFragment"
         android:name="com.example.ecom.viewmodel.OrdersFragment"
         android:label="OrdersFragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_self"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_detailedFragment"
+            app:destination="@id/detailedFragment" />
+    </fragment>
 </navigation>

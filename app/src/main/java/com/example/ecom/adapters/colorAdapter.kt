@@ -1,19 +1,15 @@
 package com.example.ecom.adapters
 
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ecom.R
 import com.example.ecom.databinding.SizeRvItemBinding
 
-class colorAdapter:RecyclerView.Adapter<colorAdapter.SizesAdapterViewHolder>() {
+class colorAdapter : RecyclerView.Adapter<colorAdapter.SizesAdapterViewHolder>() {
 
 
     var onItemClick: ((String) -> Unit)? = null
@@ -76,9 +72,10 @@ class colorAdapter:RecyclerView.Adapter<colorAdapter.SizesAdapterViewHolder>() {
         }
 
     }
-            override fun getItemCount(): Int {
-                return differ.currentList.size
-            }
 
-        }
+    override fun getItemCount(): Int {
+        return differ.currentList.size
+    }
+
+}
 

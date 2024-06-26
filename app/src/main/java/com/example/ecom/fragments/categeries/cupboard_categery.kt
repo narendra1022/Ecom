@@ -7,62 +7,62 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ecom.R
 import com.example.ecom.adapters.BestdealAdapter
-import com.example.ecom.adapters.ProductAdapter
-import com.example.ecom.data.Sp
 import com.example.ecom.databinding.FragmentCupboardCategeryBinding
-import com.example.ecom.databinding.FragmentTableCategeryBinding
 import com.example.ecom.util.Resource
 import com.example.ecom.util.show
 import com.example.ecom.viewmodel.CupboardViewModal
 import kotlinx.coroutines.flow.collectLatest
 
-class cupboard_categery:Fragment() {
+class cupboard_categery : Fragment() {
 
-   private lateinit var bdap:BestdealAdapter
+    private lateinit var bdap: BestdealAdapter
     private lateinit var binding: FragmentCupboardCategeryBinding
 
     private val viewmodel by viewModels<CupboardViewModal>()
 
-            override fun onCreateView(
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCupboardCategeryBinding.inflate(inflater)
         return (binding.root)
     }
+
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
 
 
         setupBestProductRV()
 
-        bdap.onItemClick={
-            val b=Bundle().apply { putParcelable("product",it) }
-            findNavController().navigate(R.id.action_homeFragment_to_detailedFragment,b)
+        bdap.onItemClick = {
+            val b = Bundle().apply { putParcelable("product", it) }
+            findNavController().navigate(R.id.action_homeFragment_to_detailedFragment, b)
         }
 
         lifecycleScope.launchWhenStarted {
             viewmodel.cup.collectLatest {
-                when(it) {
+                when (it) {
                     is Resource.Loading -> {
                         showLoading()
                     }
+
                     is Resource.Success -> {
                         bdap.differ.submitList(it.data)
                         hideLoading()
                     }
+
                     is Resource.Error -> {
                         hideLoading()
 
                         Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
                     }
-                    else ->Unit
+
+                    else -> Unit
 
                 }
             }
@@ -71,33 +71,35 @@ class cupboard_categery:Fragment() {
     }
 
     private fun hideLoading() {
-        binding.pb4.visibility=View.INVISIBLE
+        binding.pb4.visibility = View.INVISIBLE
     }
 
     private fun showLoading() {
-        binding.pb4.visibility=View.VISIBLE
+        binding.pb4.visibility = View.VISIBLE
     }
 
     private fun setupBestProductRV() {
 
-        bdap= BestdealAdapter()
+        bdap = BestdealAdapter()
 
 
         binding.cupboardrv.apply {
-            layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
-            val  adapter=bdap
-            binding.cupboardrv.adapter=adapter
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            val adapter = bdap
+            binding.cupboardrv.adapter = adapter
 
         }
 
 
     }
+
     override fun onResume() {
         super.onResume()
         show()
     }
 
 
-    }
+}
 
 

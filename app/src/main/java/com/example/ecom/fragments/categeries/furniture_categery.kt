@@ -9,21 +9,19 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ecom.R
-import com.example.ecom.adapters.ProductAdapter
 import com.example.ecom.adapters.Specialproductsadapter
-import com.example.ecom.data.SpecialProductDataClass
 import com.example.ecom.databinding.FragmentFurnitureCategeryBinding
 import com.example.ecom.util.Resource
 import com.example.ecom.util.show
 import com.example.ecom.viewmodel.FurnitureViewModal
 import kotlinx.coroutines.flow.collectLatest
 
-class furniture_categery:Fragment() {
+class furniture_categery : Fragment() {
 
-    private lateinit var spa:Specialproductsadapter
-    private lateinit var binding:FragmentFurnitureCategeryBinding
+    private lateinit var spa: Specialproductsadapter
+    private lateinit var binding: FragmentFurnitureCategeryBinding
 
     private val viewmodel by viewModels<FurnitureViewModal>()
 
@@ -32,7 +30,7 @@ class furniture_categery:Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentFurnitureCategeryBinding.inflate(inflater)
+        binding = FragmentFurnitureCategeryBinding.inflate(inflater)
         return (binding.root)
     }
 
@@ -40,27 +38,30 @@ class furniture_categery:Fragment() {
         super.onViewCreated(view, savedInstanceState)
         SetupBestProductRV()
 
-        spa.onItemClick={
-            val b=Bundle().apply { putParcelable("product",it) }
-            findNavController().navigate(R.id.action_homeFragment_to_detailedFragment,b)
+        spa.onItemClick = {
+            val b = Bundle().apply { putParcelable("product", it) }
+            findNavController().navigate(R.id.action_homeFragment_to_detailedFragment, b)
         }
 
         lifecycleScope.launchWhenStarted {
             viewmodel.c.collectLatest {
-                when(it) {
+                when (it) {
                     is Resource.Loading -> {
                         showLoading()
                     }
+
                     is Resource.Success -> {
                         spa.differ.submitList(it.data)
                         hideLoading()
                     }
+
                     is Resource.Error -> {
                         hideLoading()
 
                         Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
                     }
-                    else ->Unit
+
+                    else -> Unit
 
                 }
             }
@@ -69,31 +70,33 @@ class furniture_categery:Fragment() {
     }
 
     private fun hideLoading() {
-        binding.pb5.visibility=View.INVISIBLE
+        binding.pb5.visibility = View.INVISIBLE
     }
 
     private fun showLoading() {
-        binding.pb5.visibility=View.VISIBLE
+        binding.pb5.visibility = View.VISIBLE
     }
 
     private fun SetupBestProductRV() {
 
-        spa=Specialproductsadapter()
+        spa = Specialproductsadapter()
 
 
         binding.furniturerv.apply {
-            layoutManager= LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
-            val  adapter=spa
-            binding.furniturerv.adapter=adapter
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            val adapter = spa
+            binding.furniturerv.adapter = adapter
 
         }
 
 
     }
+
     override fun onResume() {
         super.onResume()
         show()
     }
 
-    }
+}
 

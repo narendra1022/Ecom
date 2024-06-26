@@ -1,6 +1,10 @@
 <resources>
-    <string name="app_name">Ecom</string>
+    <string name="app_name">ShoeHub</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cart_database">cart_database</string>
+    <string name="already_sign_in"><u>Already , sign in ?</u></string>
+    <string name="sign_up_now"><u>Sign up now </u></string>
+
+
 </resources>
