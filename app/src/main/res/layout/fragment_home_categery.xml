@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_thin"
-                android:text="Best Deals"
+                android:text="Hot Deals"
                 android:textColor="@color/black"
                 android:textSize="23sp"
                 app:layout_constraintEnd_toEndOf="parent"

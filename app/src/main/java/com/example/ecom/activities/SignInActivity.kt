@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import com.example.ecom.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.delay
 
 
 class SignInActivity : AppCompatActivity() {
@@ -38,6 +39,8 @@ class SignInActivity : AppCompatActivity() {
 
         binding.signinBtn.setOnClickListener {
 
+            binding.signinBtn.startAnimation()
+
             val email = binding.emailEt.text.toString()
             val pass = binding.passET.text.toString()
 
@@ -48,9 +51,11 @@ class SignInActivity : AppCompatActivity() {
                     if (pass.length > 6) {
                         firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                             if (it.isSuccessful) {
+                                binding.signinBtn.revertAnimation()
                                 val intent = Intent(this, shopping::class.java)
                                 startActivity(intent)
                             } else {
+                                binding.signinBtn.revertAnimation()
                                 Toast.makeText(
                                     this,
                                     "Sign In is not successful",
@@ -60,6 +65,7 @@ class SignInActivity : AppCompatActivity() {
                             }
                         }
                     } else {
+                        binding.signinBtn.revertAnimation()
                         Toast.makeText(
                             this,
                             "password length must be greater then 6 digits",
@@ -67,9 +73,13 @@ class SignInActivity : AppCompatActivity() {
                         ).show()
                     }
                 } else {
+                    binding.signinBtn.revertAnimation()
                     Toast.makeText(this, "Enter correct email format", Toast.LENGTH_SHORT).show()
                 }
 
+            } else {
+                binding.signinBtn.revertAnimation()
+                Toast.makeText(this, "Empty Fields are not allowed !!", Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -14,37 +14,33 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CartViewmodel @Inject constructor(
+class CartViewmodel @Inject constructor() : ViewModel() {
 
-) : ViewModel() {
+    private val firebase = Firebase.firestore
+    private val auth = FirebaseAuth.getInstance()
 
-    private val firebase=Firebase.firestore
-    private val auth= FirebaseAuth.getInstance()
-
-    val _specialproducts= MutableStateFlow<Resource<List<cartadata>>>(Resource.unspecified())
-    val specialproduct : StateFlow<Resource<List<cartadata>>> = _specialproducts
+    private val _specialproducts = MutableStateFlow<Resource<List<cartadata>>>(Resource.unspecified())
+    val specialproduct: StateFlow<Resource<List<cartadata>>> = _specialproducts
 
     init {
         getCartProducts()
     }
 
-
     private fun getCartProducts() {
-        viewModelScope.launch {
-            _specialproducts.emit (Resource.Loading())
-        }
-        firebase.collection (  "users")
-            .document(auth.uid!!).collection("cart").get().addOnSuccessListener{ result ->
-                val sp = result.toObjects(cartadata::class.java)
-                viewModelScope.launch {
-                    _specialproducts.emit (Resource.Success(sp))
+        _specialproducts.value = Resource.Loading()
+
+        firebase.collection("users")
+            .document(auth.uid!!).collection("cart")
+            .addSnapshotListener { snapshot, e ->
+                if (e != null) {
+                    _specialproducts.value = Resource.Error(e.message.toString())
+                    return@addSnapshotListener
                 }
-            }.addOnFailureListener {
-                viewModelScope.launch {
-                    _specialproducts.emit(Resource.Error(it.message.toString()))
+
+                if (snapshot != null) {
+                    val sp = snapshot.toObjects(cartadata::class.java)
+                    _specialproducts.value = Resource.Success(sp)
                 }
             }
     }
-
-
 }

@@ -43,6 +43,8 @@ class SignUpActivity : AppCompatActivity() {
         }
         binding.registerBtn.setOnClickListener {
 
+            binding.registerBtn.startAnimation()
+
             val email = binding.emailEt.text.toString()
             val pass = binding.passEt.text.toString()
             val confirmPass = binding.confirmPassEt.text.toString()
@@ -66,10 +68,10 @@ class SignUpActivity : AppCompatActivity() {
                             firebaseAuth.createUserWithEmailAndPassword(email, pass)
                                 .addOnCompleteListener {
                                     if (it.isSuccessful) {
-
                                         firebase.collection("users").add(users)
                                         firebase.collection("users").document(firebaseAuth.uid!!)
                                             .set(users)
+                                        binding.registerBtn.revertAnimation()
                                         val intent = Intent(this, SignInActivity::class.java)
                                         startActivity(intent)
                                     } else {
@@ -78,10 +80,12 @@ class SignUpActivity : AppCompatActivity() {
                                     }
                                 }
                         } else {
+                            binding.registerBtn.revertAnimation()
                             Toast.makeText(this, "Password is not matching", Toast.LENGTH_SHORT)
                                 .show()
                         }
                     } else {
+                        binding.registerBtn.revertAnimation()
                         Toast.makeText(
                             this,
                             "Password must be greater than 6 digits",
@@ -90,11 +94,13 @@ class SignUpActivity : AppCompatActivity() {
                     }
 
                 } else {
+                    binding.registerBtn.revertAnimation()
                     Toast.makeText(this, "Enter the correct EMAIL format", Toast.LENGTH_SHORT)
                         .show()
                 }
 
             } else {
+                binding.registerBtn.revertAnimation()
                 Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
 
             }

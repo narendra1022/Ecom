@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -124,12 +123,12 @@
         android:textColorHint="#9A9999"
         app:boxBackgroundColor="@color/light_blue"
         app:boxStrokeColor="@color/g_blue"
-        app:hintTextColor="@color/g_blue"
         app:counterEnabled="true"
         app:counterMaxLength="20"
         app:counterTextColor="@color/black"
         app:endIconMode="password_toggle"
         app:endIconTint="#9A9999"
+        app:hintTextColor="@color/g_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/outmail"
@@ -159,12 +158,12 @@
         android:textColorHint="#9A9999"
         app:boxBackgroundColor="@color/light_blue"
         app:boxStrokeColor="@color/g_blue"
-        app:hintTextColor="@color/g_blue"
         app:counterEnabled="true"
         app:counterMaxLength="20"
         app:counterTextColor="@color/black"
         app:endIconMode="password_toggle"
         app:endIconTint="#9A9999"
+        app:hintTextColor="@color/g_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/p"
@@ -212,30 +211,29 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
+
+    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
         android:id="@+id/register_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/blueButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:layout_marginStart="32sp"
         android:layout_marginTop="42dp"
         android:layout_marginEnd="32sp"
-        android:background="@color/g_blue"
-        android:fontFamily="@font/poppins_thin"
         android:text="Register your account"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llforcheckbox" />
+        app:layout_constraintTop_toBottomOf="@id/llforcheckbox"
+        app:spinning_bar_color="@color/black" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:padding="20dp"
         android:layout_marginTop="32dp"
+        android:padding="20dp"
         android:text="@string/already_sign_in"
         android:textColor="@color/black"
         android:textSize="16sp"
