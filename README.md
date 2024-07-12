@@ -40,3 +40,25 @@ Coroutines : do some code in the background.
 view binding : instead of inflating views manually view binding will take care of that.
 
 Glide : Catch images and load them in imageView.
+
+
+
+
+
+
+
+
+
+![Screenshot_2024-07-11-12-41-11-07_41aec9774ee1ceee90f574df714dab75](https://github.com/user-attachments/assets/a64576d1-6800-4570-b864-1a97e3f09ef8)
+
+
+
+![Screenshot_2024-07-11-12-41-20-45_41aec9774ee1ceee90f574df714dab75](https://github.com/user-attachments/assets/598ab77b-726b-4e15-a025-237ecefed24c)
+
+
+![Screenshot_2024-07-11-13-02-01-40_41aec9774ee1ceee90f574df714dab75](https://github.com/user-attachments/assets/bbdf6cc8-aff3-4ac5-b276-ccb4ebfcdb3f)
+
+
+
+
+
