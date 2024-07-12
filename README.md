@@ -42,6 +42,9 @@ instead of inflating views manually view binding will take care of that.
 ### Glide : 
 Catch images and load them in imageView.
 
+# Demo Video
+[![**YOUTUBE LINK**](https://img.youtube.com/vi/JoCoy0IZEu0/hqdefault.jpg)](https://youtu.be/JoCoy0IZEu0?si=IuIh90QcxFK6COE2)
+
 
 # ScreenShots
 
